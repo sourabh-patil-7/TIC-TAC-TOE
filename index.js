@@ -4,7 +4,7 @@ const boxes = document.querySelectorAll(".box");
 const newGameBtn = document.querySelector(".btn");
 
 let CurrentPlayer; //shows which turn to play
-let Grid;          //Grid is require to check behind the logic while boxes will show it on the board
+let Grid; //Grid is require to check behind the logic while boxes will show it on the board
 const winningPositions = [
   [0, 1, 2],
   [3, 4, 5],
@@ -14,7 +14,7 @@ const winningPositions = [
   [2, 5, 8],
   [0, 4, 8],
   [2, 4, 6],
-];                          //this are the possible winning postions 
+]; //this are the possible winning postions
 
 // call the function initgame() intially
 initGame();
@@ -25,15 +25,15 @@ function initGame() {
 
   boxes.forEach((box, index) => {
     box.innerHTML = ""; //make all the boxes as empty
-    // boxes[index].style.pointerEvents = "all";  
-    box.style.pointerEvents = 'all';   //this will on the pointer events on the particular box
-    //this makes all the boxes like it was present in intial 
+    // boxes[index].style.pointerEvents = "all";
+    box.style.pointerEvents = "all"; //this will on the pointer events on the particular box
+    //this makes all the boxes like it was present in intial
     // (in short we are  doing this for removing the green color background of the winner line)
     box.classList = `box box${index + 1}`;
   });
 
-  newGameBtn.classList.remove("active");  //now new game button will be invisible
-  GameInfo.innerHTML = `Current Player - ${CurrentPlayer}`;    //for showing the turn of the current player but initially it is X
+  newGameBtn.classList.remove("active"); //now new game button will be invisible
+  GameInfo.innerHTML = `Current Player - ${CurrentPlayer}`; //for showing the turn of the current player but initially it is X
 }
 
 function checkGameOver() {
@@ -86,9 +86,9 @@ function handliClick(index) {
   if (Grid[index] === "") {
     boxes[index].innerHTML = CurrentPlayer;
     Grid[index] = CurrentPlayer;
-    Grid.forEach((ans)=>{
-        console.log(ans);
-    })
+    Grid.forEach((ans) => {
+      console.log(ans);
+    });
     boxes[index].style.pointerEvents = "none";
 
     //now swap the turns of the player
@@ -104,12 +104,13 @@ function handliClick(index) {
   }
 }
 
-boxes.forEach((box,index) => {
-  box.addEventListener('click', () => {
+boxes.forEach((box, index) => {
+  box.addEventListener("click", () => {
     handliClick(index);
   });
 });
 
-newGameBtn.addEventListener('click',()=>{
-    initGame();
+//when user click on the newbutton then game will initialize again
+newGameBtn.addEventListener("click", () => {
+  initGame();
 });
